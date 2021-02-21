@@ -34,7 +34,7 @@ Notice that a a list containing a `matplotlib.lines.Line2D` gets returned, we ca
 
 I like keeping some code cells as code cells and I like uploading others as gists
 
-[https://gist.github.com/c665d01a9079b73b3c67292591f242d7](https://gist.github.com/c665d01a9079b73b3c67292591f242d7)
+[https://gist.github.com/e278f70fdca9f7169499e3c5034dab3f](https://gist.github.com/e278f70fdca9f7169499e3c5034dab3f)
 
 ## Images from local paths
 
@@ -44,6 +44,12 @@ I like keeping some code cells as code cells and I like uploading others as gist
 
 ![](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.TYe3gPutefAvqQe69fSXYAAAAA%26pid%3DApi&f=1)
 ![](https://cdn-images-1.medium.com/proxy/1*xYdnXpwz3wapR0XTS4aP6Q.png)
+
+| 1 | 2 | 3   | 4 | r |
+|---|---|-----|---|---|
+| r | r | rfd | d | s |
+| s | s | s   | s | s |
+| s | s | s   | s | s |
 
 
 ```python
