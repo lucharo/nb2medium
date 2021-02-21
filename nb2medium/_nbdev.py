@@ -2,9 +2,24 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {}
+index = {"base_request": "00_API.ipynb",
+         "auth_header": "00_API.ipynb",
+         "fetch_user_data": "00_API.ipynb",
+         "get_user_id": "00_API.ipynb",
+         "fetch_publications": "00_API.ipynb",
+         "post_article": "00_API.ipynb",
+         "post_image": "00_API.ipynb",
+         "WriteMarkdown": "01_convert.ipynb",
+         "HidePreprocessor": "01_convert.ipynb",
+         "check_gh_auth": "01_convert.ipynb",
+         "upload_gist": "01_convert.ipynb",
+         "GisterPreprocessor": "01_convert.ipynb",
+         "ImagePreprocessor": "01_convert.ipynb",
+         "nb2medium": "02_upload.ipynb"}
 
-modules = []
+modules = ["API.py",
+           "convert.py",
+           "upload.py"]
 
 doc_url = "https://lc5415.github.io/nb2medium/"
 
