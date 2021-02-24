@@ -4,12 +4,14 @@ __all__ = ['nb2medium']
 
 # Cell
 import os
-from .API import post_article
+from .mediumapi import post_article
 from .convert import (
     HidePreprocessor,
     GisterPreprocessor,
     ImagePreprocessor,
-    WriteMarkdown )
+    WriteMarkdown,
+    init_convert_logger
+)
 from nbconvert.exporters import MarkdownExporter
 from nbconvert.preprocessors import TagRemovePreprocessor
 
@@ -17,12 +19,15 @@ def nb2medium(
     title,
     notebook
 ):
+
+    init_convert_logger()
+
     # declare exporter
     m = MarkdownExporter()
     # Hide Preprocessors
-    m.register_preprocessor(HidePreprocessor(mode = 'source', patterns = ['^#\s*hide-source']), enabled = True)
-    m.register_preprocessor(HidePreprocessor(mode = 'output', patterns = ['^#\s*hide-output']), enabled = True)
-    m.register_preprocessor(HidePreprocessor(mode = 'cell', patterns = ['^#\s*hide-cell']), enabled = True)
+    m.register_preprocessor(HidePreprocessor(mode = 'source'), enabled = True)
+    m.register_preprocessor(HidePreprocessor(mode = 'output'), enabled = True)
+    m.register_preprocessor(HidePreprocessor(mode = 'cell'), enabled = True)
     m.register_preprocessor(
         TagRemovePreprocessor(
             remove_input_tags = ('hide-source',),
@@ -31,7 +36,7 @@ def nb2medium(
             enabled = True)
     )
     # Gister Preprocessors
-    m.register_preprocessor(GisterPreprocessor(patterns = ['^#\s*gist']), enabled = True)
+    m.register_preprocessor(GisterPreprocessor(), enabled = True)
     #Image Preprocessors
     m.register_preprocessor(ImagePreprocessor(), enabled = True)
 

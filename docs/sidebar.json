@@ -1,7 +1,7 @@
 {
   "nb2medium": {
     "Overview": "/",
-    "API": "API.html",
+    "MediumAPI": "mediumapi.html",
     "Convert": "convert.html",
     "Uploader": "upload.html"
   }

@@ -10,8 +10,8 @@ entries:
       title: Overview
       url: /
     - output: web,pdf
-      title: API
-      url: API.html
+      title: MediumAPI
+      url: mediumapi.html
     - output: web,pdf
       title: Convert
       url: convert.html

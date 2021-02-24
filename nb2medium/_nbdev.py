@@ -2,13 +2,14 @@
 
 __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
-index = {"base_request": "00_API.ipynb",
-         "auth_header": "00_API.ipynb",
-         "fetch_user_data": "00_API.ipynb",
-         "get_user_id": "00_API.ipynb",
-         "fetch_publications": "00_API.ipynb",
-         "post_article": "00_API.ipynb",
-         "post_image": "00_API.ipynb",
+index = {"base_request": "00_mediumapi.ipynb",
+         "auth_header": "00_mediumapi.ipynb",
+         "fetch_user_data": "00_mediumapi.ipynb",
+         "get_user_id": "00_mediumapi.ipynb",
+         "fetch_publications": "00_mediumapi.ipynb",
+         "post_article": "00_mediumapi.ipynb",
+         "post_image": "00_mediumapi.ipynb",
+         "init_convert_logger": "01_convert.ipynb",
          "WriteMarkdown": "01_convert.ipynb",
          "HidePreprocessor": "01_convert.ipynb",
          "check_gh_auth": "01_convert.ipynb",
@@ -17,7 +18,7 @@ index = {"base_request": "00_API.ipynb",
          "ImagePreprocessor": "01_convert.ipynb",
          "nb2medium": "02_upload.ipynb"}
 
-modules = ["API.py",
+modules = ["mediumapi.py",
            "convert.py",
            "upload.py"]
 
