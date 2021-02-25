@@ -11,6 +11,11 @@ from nbconvert.writers import FilesWriter
 import logging
 
 def init_convert_logger(level = logging.INFO):
+    #delete loggger if it exists
+    if len(logging.getLogger('converter').handlers) != 0:
+        logging.getLogger('converter').\
+        removeHandler(logging.getLogger('converter').handlers[0])
+
     # create logger
     logger = logging.getLogger('converter')
     logger.setLevel(level)
@@ -310,7 +315,7 @@ class ImagePreprocessor(Preprocessor):
                 n_items+=1
                 #write next cell
                 nb['cells'].insert(n+1, newcell)
-                n+=1 # skip next cell
+                n+=1 # skip cell we've just created
             n+=1
 
         self.logger.info(f"Detected {n_plots} plots and {n_local_images} local images in notebook.")

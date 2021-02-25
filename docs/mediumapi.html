@@ -483,7 +483,7 @@ nb_path: "nbs/00_mediumapi.ipynb"
    &#39;imageUrl&#39;: &#39;https://cdn-images-1.medium.com/fit/c/400/400/1*3RTyL2e-UvYez9Qo4YuFiA.png&#39;},
   {&#39;id&#39;: &#39;f5af2b715248&#39;,
    &#39;name&#39;: &#39;The Startup&#39;,
-   &#39;description&#39;: &#34;Medium&#39;s largest active publication, followed by +768K people. Follow to join our community.&#34;,
+   &#39;description&#39;: &#34;Medium&#39;s largest active publication, followed by +771K people. Follow to join our community.&#34;,
    &#39;url&#39;: &#39;https://medium.com/swlh&#39;,
    &#39;imageUrl&#39;: &#39;https://cdn-images-1.medium.com/fit/c/400/400/1*Xd2uZaVHfrGOP14W_3UQRg.jpeg&#39;}]}</pre>
 </div>
@@ -630,44 +630,6 @@ nb_path: "nbs/00_mediumapi.ipynb"
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl <span class="err">\</span>
-  <span class="o">-</span><span class="n">X</span> <span class="n">POST</span> \
-  <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Accept: application/vnd.github.v3+json&quot;</span> \
-  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">gists</span> \
-  <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;{&quot;files&quot;:{&quot;CONTRIBUTING.md&quot;}}&#39;</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>{
-  &#34;message&#34;: &#34;Requires authentication&#34;,
-  &#34;documentation_url&#34;: &#34;https://docs.github.com/rest/reference/gists#create-a-gist&#34;
-}
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This command posts an article via a simple POST request. If the article is correctly submitted a JSON response like the below will be returned</p>
@@ -722,10 +684,10 @@ nb_path: "nbs/00_mediumapi.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;f0d5723f4bd4&#39;,
+<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;2fbe43bd07d5&#39;,
   &#39;title&#39;: &#39;Test from nb&#39;,
   &#39;authorId&#39;: &#39;16eaaf7a06cf688353bd560c48dd5ef7fa1f0350adc3d0d211f596e698115e308&#39;,
-  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/f0d5723f4bd4&#39;,
+  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/2fbe43bd07d5&#39;,
   &#39;canonicalUrl&#39;: &#39;&#39;,
   &#39;publishStatus&#39;: &#39;draft&#39;,
   &#39;license&#39;: &#39;&#39;,
@@ -761,7 +723,7 @@ nb_path: "nbs/00_mediumapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_post_from_file</span> <span class="o">=</span> <span class="n">post_article</span><span class="p">(</span><span class="s1">&#39;Test from file&#39;</span><span class="p">,</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../tests/LEARNING.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span><span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_post_from_file</span> <span class="o">=</span> <span class="n">post_article</span><span class="p">(</span><span class="s1">&#39;Test from file&#39;</span><span class="p">,</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../samples/LEARNING.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span><span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -793,10 +755,10 @@ nb_path: "nbs/00_mediumapi.ipynb"
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;d0daa0d04215&#39;,
+<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;8516927e952a&#39;,
   &#39;title&#39;: &#39;Test from file&#39;,
   &#39;authorId&#39;: &#39;16eaaf7a06cf688353bd560c48dd5ef7fa1f0350adc3d0d211f596e698115e308&#39;,
-  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/d0daa0d04215&#39;,
+  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/8516927e952a&#39;,
   &#39;canonicalUrl&#39;: &#39;&#39;,
   &#39;publishStatus&#39;: &#39;draft&#39;,
   &#39;license&#39;: &#39;&#39;,
@@ -882,7 +844,7 @@ img: can be a binary image representation</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_img</span> <span class="o">=</span> <span class="n">post_image</span><span class="p">(</span><span class="s1">&#39;../tests/github-logo.png&#39;</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_img</span> <span class="o">=</span> <span class="n">post_image</span><span class="p">(</span><span class="s1">&#39;../samples/github-logo.png&#39;</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">my_img</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 
@@ -942,7 +904,7 @@ img: can be a binary image representation</p>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">io</span> <span class="kn">import</span> <span class="n">BytesIO</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../tests/github-logo.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../samples/github-logo.png&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Which is some sort of byte stream: like </span><span class="si">{</span><span class="n">img</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -956,7 +918,7 @@ img: can be a binary image representation</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Which is some sort of byte stream: like b&#39;\x89PNG\n\n\x1a\n\x00\x00&#39;
+<pre>Which is some sort of byte stream: like b&#39;\x89PNG\r\n\x1a\n\x00\x00&#39;
 </pre>
 </div>
 </div>
@@ -1025,8 +987,8 @@ img: can be a binary image representation</p>
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>curl -X POST https://api.medium.com/v1/images <span class="err">\</span>
 	<span class="o">-</span><span class="n">H</span> <span class="s2">&quot;Authorization: Bearer $MEDIUM_TOKEN_TEST&quot;</span> \
-	<span class="o">-</span><span class="n">F</span> <span class="s1">&#39;name=&quot;image&quot;; filename=&quot;github-logo.png&quot; ; type=&quot;image/png&quot;;&#39;</span> \
-	<span class="o">-</span><span class="n">F</span> <span class="s1">&#39;image=@LEARNING/github-logo.png&#39;</span> <span class="o">|</span> <span class="n">jq</span>
+	<span class="o">-</span><span class="n">F</span> <span class="s1">&#39;name=&quot;image&quot;; filename=&quot;../samples/github-logo.png&quot; ; type=&quot;image/png&quot;;&#39;</span> \
+	<span class="o">-</span><span class="n">F</span> <span class="s1">&#39;image=@../samples/github-logo.png&#39;</span> <span class="o">|</span> <span class="n">jq</span>
 </pre></div>
 
     </div>
@@ -1039,7 +1001,15 @@ img: can be a binary image representation</p>
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>curl: (26) Failed to open/read local data from file/application
+<pre>  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 51237  100   116  100 51121    182  80632 --:--:-- --:--:-- --:--:-- 80815
+<span class="ansi-bold">{
+  </span><span class="ansi-blue-intense-fg ansi-bold">&#34;data&#34;</span><span class="ansi-bold">: </span><span class="ansi-bold">{
+    </span><span class="ansi-blue-intense-fg ansi-bold">&#34;url&#34;</span><span class="ansi-bold">: </span><span class="ansi-green-fg">&#34;https://cdn-images-1.medium.com/proxy/1*sV7tva-728oySeOUL0-vOw.png&#34;</span><span class="ansi-bold">,
+    </span><span class="ansi-blue-intense-fg ansi-bold">&#34;md5&#34;</span><span class="ansi-bold">: </span><span class="ansi-green-fg">&#34;sV7tva-728oySeOUL0-vOw&#34;</span><span class="ansi-bold">
+  </span><span class="ansi-bold">}</span><span class="ansi-bold">
+</span><span class="ansi-bold">}</span>
 </pre>
 </div>
 </div>
@@ -1076,7 +1046,7 @@ img: can be a binary image representation</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../tests/test-with-online-image.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">article</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../samples/test-offline-image.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">article</span><span class="p">:</span>
     <span class="n">my_post_from_file_with_online_image</span> <span class="o">=</span> <span class="n">post_article</span><span class="p">(</span>
         <span class="s1">&#39;Test from file with online image&#39;</span><span class="p">,</span>
         <span class="n">article</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
@@ -1112,10 +1082,10 @@ img: can be a binary image representation</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;2c7dafd0689b&#39;,
+<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;21d87a904098&#39;,
   &#39;title&#39;: &#39;Test from file with online image&#39;,
   &#39;authorId&#39;: &#39;16eaaf7a06cf688353bd560c48dd5ef7fa1f0350adc3d0d211f596e698115e308&#39;,
-  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/2c7dafd0689b&#39;,
+  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/21d87a904098&#39;,
   &#39;canonicalUrl&#39;: &#39;&#39;,
   &#39;publishStatus&#39;: &#39;draft&#39;,
   &#39;license&#39;: &#39;&#39;,
@@ -1145,7 +1115,7 @@ img: can be a binary image representation</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../tests/test-with-offline-image.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">article</span><span class="p">:</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../samples/test-offline-image.md&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">article</span><span class="p">:</span>
     <span class="n">my_post_from_file_with_offline_image</span> <span class="o">=</span> <span class="n">post_article</span><span class="p">(</span>
         <span class="s1">&#39;Test from file with offline image&#39;</span><span class="p">,</span>
         <span class="n">article</span><span class="o">.</span><span class="n">read</span><span class="p">(),</span>
@@ -1181,10 +1151,10 @@ img: can be a binary image representation</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;47547e87d4f2&#39;,
+<pre>{&#39;data&#39;: {&#39;id&#39;: &#39;777c95c5d0ae&#39;,
   &#39;title&#39;: &#39;Test from file with offline image&#39;,
   &#39;authorId&#39;: &#39;16eaaf7a06cf688353bd560c48dd5ef7fa1f0350adc3d0d211f596e698115e308&#39;,
-  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/47547e87d4f2&#39;,
+  &#39;url&#39;: &#39;https://medium.com/@luischaveshuntington/777c95c5d0ae&#39;,
   &#39;canonicalUrl&#39;: &#39;&#39;,
   &#39;publishStatus&#39;: &#39;draft&#39;,
   &#39;license&#39;: &#39;&#39;,

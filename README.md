@@ -1,4 +1,3 @@
-
 # nb2medium
 > Python package and Jupyter extension that enables submitting Medium drafts elegantly from a Jupyter Notebook
 
@@ -25,8 +24,15 @@ nb2medium uploads Jupyter notebooks as they are, the notebooks do not get execut
 ```
 from nb2medium.upload import nb2medium
 
-nb2medium(title = 'My First Article', notebook = '../tests/test-notebook.ipynb');
+nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');
 ```
+
+    converter:DEBUG - GITHUB_TOKEN environment variable found.
+    converter:INFO - Detected 4 plots and 2 local images in notebook.
+    converter:INFO - Detected 4 plots and 2 local images in notebook.
+    converter:INFO - Markdown document written to ../samples/test-notebook.md
+    converter:INFO - Markdown document written to ../samples/test-notebook.md
+
 
 ### Images, code cells and tables
 
