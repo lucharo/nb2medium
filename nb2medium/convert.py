@@ -133,15 +133,17 @@ def upload_gist(gistname , gistcontent, description = "", public = False):
                 data = json.dumps({
                     'description': description,
                     'files': {gistname: {'content': gistcontent}},
-                    'public': False
+                    'public': public
                 }),
                 headers = {
                     'Authorization': f"token {os.getenv('GITHUB_TOKEN')}",
                     "Accept": "application/vnd.github.v3+json"
                 }
         )
-
-    return post_req.ok, post_req.json()['html_url']
+    if post_req.ok:
+        return post_req.ok, post_req.json()['html_url']
+    else:
+        raise Exception(f"There was an error uploading the gist {gistname}")
 
 # Cell
 import bs4

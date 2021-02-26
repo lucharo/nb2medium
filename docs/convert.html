@@ -871,7 +871,7 @@ public: whether the gist should be public or private</p>
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upload_gist</span><span class="p">(</span><span class="s1">&#39;ghapitest&#39;</span><span class="p">,</span> <span class="n">gistcontent</span> <span class="o">=</span> <span class="s1">&#39;CONTRIBUTING.md&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">upload_gist</span><span class="p">(</span><span class="s1">&#39;ghapitest&#39;</span><span class="p">,</span> <span class="n">gistcontent</span> <span class="o">=</span> <span class="s1">&#39;../CONTRIBUTING.md&#39;</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;nb2medium-test&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -886,7 +886,7 @@ public: whether the gist should be public or private</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(True, &#39;https://gist.github.com/8cdec017e02740fc63bb4669b032a4b5&#39;)</pre>
+<pre>(True, &#39;https://gist.github.com/c507940b4b26796a816b0f621fa5d50a&#39;)</pre>
 </div>
 
 </div>
@@ -1026,7 +1026,7 @@ public: whether the gist should be public or private</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L150" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L152" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the #gist tag in a Jupyter Notebook cell,
 uploads the code in that cell as a GitHub gist for the authenticated user and replaces the original cell
@@ -1471,7 +1471,7 @@ converter:INFO - Gist script.py.txt.csv succesfully uploaded!
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L289" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L291" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the image in a Jupyter Notebook cell's output,
 uploads the image to Medium</p>
