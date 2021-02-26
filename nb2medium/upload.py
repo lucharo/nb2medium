@@ -10,17 +10,26 @@ from .convert import (
     GisterPreprocessor,
     ImagePreprocessor,
     WriteMarkdown,
-    init_convert_logger
+    init_logger
 )
 from nbconvert.exporters import MarkdownExporter
 from nbconvert.preprocessors import TagRemovePreprocessor
+import logging
 
 def nb2medium(
     title,
-    notebook
+    notebook,
+    log_level = logging.INFO
 ):
 
-    init_convert_logger()
+    # convert logger
+    init_logger('converter', log_level)
+    init_logger('uploader', log_level)
+    upload_logger = logging.getLogger('uploader')
+    if not os.getenv('MEDIUM_TOKEN'):
+        upload_logger.critical('MEDIUM_TOKEN not found, please make sure MEDIUM_TOKEN is defined')
+    else:
+        upload_logger.debug('Detected MEDIUM_TOKEN')
 
     # declare exporter
     m = MarkdownExporter()
@@ -47,11 +56,12 @@ def nb2medium(
     path, name = os.path.split(notebook)
     basename, ext = os.path.splitext(name)
     WriteMarkdown(b,r, filename = basename)
+    md_home = os.path.join(path, basename, f"{basename}.md")
 
     # upload markdown document as medium post
-    return post_article(
+    post_request = post_article(
         title = title,
-        content = open(f"{os.path.splitext(notebook)[0]}.md").read()
+        content = open(md_home).read()
     )
 
-
+    upload_logger.info(f"Draft of '{title}' from {os.path.basename(notebook)} notebook uploaded to Medium: {post_request.json()['data']['url']}")

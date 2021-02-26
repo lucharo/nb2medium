@@ -1,5 +1,3 @@
-[![CI](https://github.com/lc5415/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lc5415/nb2medium/actions/workflows/main.yml)
-
 # nb2medium
 > Python package and Jupyter extension that enables submitting Medium drafts elegantly from a Jupyter Notebook
 
@@ -64,7 +62,7 @@ pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})
 ```
 Though if a GitHub token is available and the user includes the following header in a cell:
 ```python
-# gist gistname: pandas.py
+# %gist gistname: pandas.py
 import pandas as pd
 pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})
 ```
@@ -75,20 +73,27 @@ The code block will be uploaded to the user's GitHub as a private gist (by defau
 It is often convenient to hide either a cell's source (i.e. the code), a cell's output (the result of evaluating the code) or the whole cell altogether. To achieve this the user can place the following header at the start of the relevant cells.
 * To hide a cell's source:
 ```python
-# hide-source
+# %hide-source
 print("This code won't be shown, but it's output will")
 ```
 * To hide a cell's output:
 ```python
-# hide-output
+# %hide-output
 print("This code will be shown, but it's output won't")
 ```
 * To hide a cell completely (source and output):
 ```python
-# hide-cell
+# %hide-cell
 print("This cell won't make it to the final document")
 ```
 
+_Note:_ all tags (`%hide-*` and `%gist`) were not designed with the idea to be combined so such usage has not been tested. In general there should be no need for such behaviour.
+
 #### Tables
 
-Not supported yet
+Medium does not have good support for HTML nor Markdown tables. My preferred existing option for tables is `gist`. If a cell outputs a pandas dataframe and you choose the `#%gist` option with the value of the `upload:` flag set to `both` or `output`, `nd2medium` will detect your table and upload it as a CSV to your GitHub gist repo.
+```python
+#% gist gistname: pandas.py upload: both
+import pandas as pd
+pd.DataFrame({'a': [1,2,3], 'b': [0,0,0], 'c': ['One', 'Two', 'Three']})
+```

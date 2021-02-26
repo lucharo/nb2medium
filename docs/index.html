@@ -158,7 +158,7 @@ If the image is the result of a plot, such as:</p>
 <pre><code>import pandas as pd
 pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})</code></pre>
 <p>Though if a GitHub token is available and the user includes the following header in a cell:</p>
-<div class="highlight"><pre><span></span><span class="c1"># gist gistname: pandas.py</span>
+<div class="highlight"><pre><span></span><span class="c1"># %gist gistname: pandas.py</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]})</span>
 </pre></div>
@@ -177,19 +177,26 @@ pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is often convenient to hide either a cell's source (i.e. the code), a cell's output (the result of evaluating the code) or the whole cell altogether. To achieve this the user can place the following header at the start of the relevant cells.</p>
 <ul>
-<li>To hide a cell's source:<div class="highlight"><pre><span></span><span class="c1"># hide-source</span>
+<li>To hide a cell's source:<div class="highlight"><pre><span></span><span class="c1"># %hide-source</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This code won&#39;t be shown, but it&#39;s output will&quot;</span><span class="p">)</span>
 </pre></div>
 </li>
-<li>To hide a cell's output:<div class="highlight"><pre><span></span><span class="c1"># hide-output</span>
+<li>To hide a cell's output:<div class="highlight"><pre><span></span><span class="c1"># %hide-output</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This code will be shown, but it&#39;s output won&#39;t&quot;</span><span class="p">)</span>
 </pre></div>
 </li>
-<li>To hide a cell completely (source and output):<div class="highlight"><pre><span></span><span class="c1"># hide-cell</span>
+<li>To hide a cell completely (source and output):<div class="highlight"><pre><span></span><span class="c1"># %hide-cell</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This cell won&#39;t make it to the final document&quot;</span><span class="p">)</span>
 </pre></div>
 </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Note:</em> all tags (<code>%hide-*</code> and <code>%gist</code>) were not designed with the idea to be combined so such usage has not been tested. In general there should be no need for such behaviour.</p>
 
 </div>
 </div>
@@ -202,7 +209,11 @@ pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})</code></pre>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Not supported yet</p>
+<p>Medium does not have good support for HTML nor Markdown tables. My preferred existing option for tables is <code>gist</code>. If a cell outputs a pandas dataframe and you choose the <code>#%gist</code> option with the value of the <code>upload:</code> flag set to <code>both</code> or <code>output</code>, <code>nd2medium</code> will detect your table and upload it as a CSV to your GitHub gist repo.</p>
+<div class="highlight"><pre><span></span><span class="c1">#% gist gistname: pandas.py upload: both</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">]})</span>
+</pre></div>
 
 </div>
 </div>
