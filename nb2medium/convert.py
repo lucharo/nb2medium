@@ -57,9 +57,6 @@ def WriteMarkdown(body, resources, dir_path = None, filename = None):
     logger.info(f"Markdown document written to {markdown_location}")
 
 # Cell
-from nbconvert.preprocessors import RegexRemovePreprocessor
-
-# Cell
 from nbconvert.preprocessors import Preprocessor, TagRemovePreprocessor
 from traitlets import List, Unicode, Set
 import re
@@ -143,7 +140,9 @@ def upload_gist(gistname , gistcontent, description = "", public = False):
     if post_req.ok:
         return post_req.ok, post_req.json()['html_url']
     else:
-        raise Exception(f"There was an error uploading the gist {gistname}")
+        raise Exception(f"There was an error (response {post_req.status_code}),\
+        uploading the gist {gistname},\
+        reason: {post_req.reason}")
 
 # Cell
 import bs4

@@ -1,3 +1,5 @@
+[![CI](https://github.com/lc5415/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lc5415/nb2medium/actions/workflows/main.yml)
+
 # nb2medium
 > Python package and Jupyter extension that enables submitting Medium drafts elegantly from a Jupyter Notebook
 

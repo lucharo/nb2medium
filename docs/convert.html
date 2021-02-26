@@ -570,6 +570,16 @@ filename should be the output document's name</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">nbconvert.preprocessors</span> <span class="kn">import</span> <span class="n">RegexRemovePreprocessor</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -633,7 +643,7 @@ filename should be the output document's name</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="HidePreprocessor" class="doc_header"><code>class</code> <code>HidePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L67" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>HidePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="HidePreprocessor" class="doc_header"><code>class</code> <code>HidePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L64" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>HidePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that hides cell's body and only keeps the output based on regex matching</p>
 <p>Regex matching is based on the [RegexRemovePreprocessor source]
@@ -808,7 +818,7 @@ print(&#39;My name is Jack&#39;)
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="check_gh_auth" class="doc_header"><code>check_gh_auth</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L106" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>check_gh_auth</code>()</p>
+<h4 id="check_gh_auth" class="doc_header"><code>check_gh_auth</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L103" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>check_gh_auth</code>()</p>
 </blockquote>
 
 </div>
@@ -839,7 +849,7 @@ print(&#39;My name is Jack&#39;)
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="upload_gist" class="doc_header"><code>upload_gist</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_gist</code>(<strong><code>gistname</code></strong>, <strong><code>gistcontent</code></strong>, <strong><code>description</code></strong>=<em><code>''</code></em>, <strong><code>public</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="upload_gist" class="doc_header"><code>upload_gist</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L117" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_gist</code>(<strong><code>gistname</code></strong>, <strong><code>gistcontent</code></strong>, <strong><code>description</code></strong>=<em><code>''</code></em>, <strong><code>public</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>description: Description of gist, i.e. some metatext explaining what the gist is about
 gistname: name displayed for the gist, this impacts how the file is rendered based
@@ -871,6 +881,162 @@ public: whether the gist should be public or private</p>
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post_req</span> <span class="o">=</span> <span class="n">post</span><span class="p">(</span><span class="s2">&quot;https://api.github.com/gists&quot;</span><span class="p">,</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span>
+                <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;why do actions fail&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;files&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;act.txt&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="s1">&#39;actions keep failing&#39;</span><span class="p">}},</span>
+                <span class="s1">&#39;public&#39;</span><span class="p">:</span> <span class="kc">False</span>
+            <span class="p">}),</span>
+            <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s1">&#39;Authorization&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;token </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;GITHUB_TOKEN&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;application/vnd.github.v3+json&quot;</span>
+            <span class="p">}</span>
+    <span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post_req</span><span class="o">.</span><span class="n">status_code</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>201</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">post_req</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;url&#39;: &#39;https://api.github.com/gists/67ef87d3f3e89d42205986a1b3241886&#39;,
+ &#39;forks_url&#39;: &#39;https://api.github.com/gists/67ef87d3f3e89d42205986a1b3241886/forks&#39;,
+ &#39;commits_url&#39;: &#39;https://api.github.com/gists/67ef87d3f3e89d42205986a1b3241886/commits&#39;,
+ &#39;id&#39;: &#39;67ef87d3f3e89d42205986a1b3241886&#39;,
+ &#39;node_id&#39;: &#39;MDQ6R2lzdDY3ZWY4N2QzZjNlODlkNDIyMDU5ODZhMWIzMjQxODg2&#39;,
+ &#39;git_pull_url&#39;: &#39;https://gist.github.com/67ef87d3f3e89d42205986a1b3241886.git&#39;,
+ &#39;git_push_url&#39;: &#39;https://gist.github.com/67ef87d3f3e89d42205986a1b3241886.git&#39;,
+ &#39;html_url&#39;: &#39;https://gist.github.com/67ef87d3f3e89d42205986a1b3241886&#39;,
+ &#39;files&#39;: {&#39;act.txt&#39;: {&#39;filename&#39;: &#39;act.txt&#39;,
+   &#39;type&#39;: &#39;text/plain&#39;,
+   &#39;language&#39;: &#39;Text&#39;,
+   &#39;raw_url&#39;: &#39;https://gist.githubusercontent.com/lc5415/67ef87d3f3e89d42205986a1b3241886/raw/8835d6e9f9460201f0f6d89162e09b956477b2c4/act.txt&#39;,
+   &#39;size&#39;: 20,
+   &#39;truncated&#39;: False,
+   &#39;content&#39;: &#39;actions keep failing&#39;}},
+ &#39;public&#39;: False,
+ &#39;created_at&#39;: &#39;2021-02-26T15:43:18Z&#39;,
+ &#39;updated_at&#39;: &#39;2021-02-26T15:43:18Z&#39;,
+ &#39;description&#39;: &#39;why do actions fail&#39;,
+ &#39;comments&#39;: 0,
+ &#39;user&#39;: None,
+ &#39;comments_url&#39;: &#39;https://api.github.com/gists/67ef87d3f3e89d42205986a1b3241886/comments&#39;,
+ &#39;owner&#39;: {&#39;login&#39;: &#39;lc5415&#39;,
+  &#39;id&#39;: 47890755,
+  &#39;node_id&#39;: &#39;MDQ6VXNlcjQ3ODkwNzU1&#39;,
+  &#39;avatar_url&#39;: &#39;https://avatars.githubusercontent.com/u/47890755?v=4&#39;,
+  &#39;gravatar_id&#39;: &#39;&#39;,
+  &#39;url&#39;: &#39;https://api.github.com/users/lc5415&#39;,
+  &#39;html_url&#39;: &#39;https://github.com/lc5415&#39;,
+  &#39;followers_url&#39;: &#39;https://api.github.com/users/lc5415/followers&#39;,
+  &#39;following_url&#39;: &#39;https://api.github.com/users/lc5415/following{/other_user}&#39;,
+  &#39;gists_url&#39;: &#39;https://api.github.com/users/lc5415/gists{/gist_id}&#39;,
+  &#39;starred_url&#39;: &#39;https://api.github.com/users/lc5415/starred{/owner}{/repo}&#39;,
+  &#39;subscriptions_url&#39;: &#39;https://api.github.com/users/lc5415/subscriptions&#39;,
+  &#39;organizations_url&#39;: &#39;https://api.github.com/users/lc5415/orgs&#39;,
+  &#39;repos_url&#39;: &#39;https://api.github.com/users/lc5415/repos&#39;,
+  &#39;events_url&#39;: &#39;https://api.github.com/users/lc5415/events{/privacy}&#39;,
+  &#39;received_events_url&#39;: &#39;https://api.github.com/users/lc5415/received_events&#39;,
+  &#39;type&#39;: &#39;User&#39;,
+  &#39;site_admin&#39;: False},
+ &#39;forks&#39;: [],
+ &#39;history&#39;: [{&#39;user&#39;: {&#39;login&#39;: &#39;lc5415&#39;,
+    &#39;id&#39;: 47890755,
+    &#39;node_id&#39;: &#39;MDQ6VXNlcjQ3ODkwNzU1&#39;,
+    &#39;avatar_url&#39;: &#39;https://avatars.githubusercontent.com/u/47890755?v=4&#39;,
+    &#39;gravatar_id&#39;: &#39;&#39;,
+    &#39;url&#39;: &#39;https://api.github.com/users/lc5415&#39;,
+    &#39;html_url&#39;: &#39;https://github.com/lc5415&#39;,
+    &#39;followers_url&#39;: &#39;https://api.github.com/users/lc5415/followers&#39;,
+    &#39;following_url&#39;: &#39;https://api.github.com/users/lc5415/following{/other_user}&#39;,
+    &#39;gists_url&#39;: &#39;https://api.github.com/users/lc5415/gists{/gist_id}&#39;,
+    &#39;starred_url&#39;: &#39;https://api.github.com/users/lc5415/starred{/owner}{/repo}&#39;,
+    &#39;subscriptions_url&#39;: &#39;https://api.github.com/users/lc5415/subscriptions&#39;,
+    &#39;organizations_url&#39;: &#39;https://api.github.com/users/lc5415/orgs&#39;,
+    &#39;repos_url&#39;: &#39;https://api.github.com/users/lc5415/repos&#39;,
+    &#39;events_url&#39;: &#39;https://api.github.com/users/lc5415/events{/privacy}&#39;,
+    &#39;received_events_url&#39;: &#39;https://api.github.com/users/lc5415/received_events&#39;,
+    &#39;type&#39;: &#39;User&#39;,
+    &#39;site_admin&#39;: False},
+   &#39;version&#39;: &#39;34b407fe87bcd1fbca41df32d11b2b0ec0fc3b8e&#39;,
+   &#39;committed_at&#39;: &#39;2021-02-26T15:43:18Z&#39;,
+   &#39;change_status&#39;: {&#39;total&#39;: 1, &#39;additions&#39;: 1, &#39;deletions&#39;: 0},
+   &#39;url&#39;: &#39;https://api.github.com/gists/67ef87d3f3e89d42205986a1b3241886/34b407fe87bcd1fbca41df32d11b2b0ec0fc3b8e&#39;}],
+ &#39;truncated&#39;: False}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">upload_gist</span><span class="p">(</span><span class="s1">&#39;ghapitest&#39;</span><span class="p">,</span> <span class="n">gistcontent</span> <span class="o">=</span> <span class="s1">&#39;../CONTRIBUTING.md&#39;</span><span class="p">,</span> <span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;nb2medium-test&quot;</span><span class="p">)</span>
 </pre></div>
 
@@ -886,7 +1052,7 @@ public: whether the gist should be public or private</p>
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>(True, &#39;https://gist.github.com/c507940b4b26796a816b0f621fa5d50a&#39;)</pre>
+<pre>(True, &#39;https://gist.github.com/784a60033454dfd8389d2b0583d3a808&#39;)</pre>
 </div>
 
 </div>
@@ -1026,7 +1192,7 @@ public: whether the gist should be public or private</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L152" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L151" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the #gist tag in a Jupyter Notebook cell,
 uploads the code in that cell as a GitHub gist for the authenticated user and replaces the original cell
@@ -1471,7 +1637,7 @@ converter:INFO - Gist script.py.txt.csv succesfully uploaded!
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L291" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L290" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the image in a Jupyter Notebook cell's output,
 uploads the image to Medium</p>
