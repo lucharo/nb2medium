@@ -31,5 +31,6 @@ jobs:
     - name: Run tests
       env:
         MEDIUM_TOKEN: ${{ secrets.MEDIUM_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUN_TOKEN }}
       run: |
         nbdev_test_nbs
