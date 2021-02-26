@@ -21,18 +21,17 @@ def base_request():
         print('Successfull GET Request')
 
 # Cell
-def auth_header(token = None, test = False):
-    if token is None:
-        token = os.getenv('MEDIUM_TOKEN') if not test else os.getenv('MEDIUM_TOKEN_TEST')
+def auth_header(token = None):
+    token = os.getenv('MEDIUM_TOKEN')
     return {'Authorization': f"Bearer {token}"}
 
 # Cell
-def fetch_user_data(test = False):
-    return get("https://api.medium.com/v1/me", headers = auth_header(test = test))
+def fetch_user_data():
+    return get("https://api.medium.com/v1/me", headers = auth_header())
 
 # Cell
-def get_user_id(test = False):
-    return fetch_user_data(test).json()['data']['id']
+def get_user_id():
+    return fetch_user_data().json()['data']['id']
 
 # Cell
 def fetch_publications():
@@ -47,8 +46,7 @@ def post_article(
     canonicalUrl = None,
     publishStatus = 'draft',
     license = None,
-    notifyFollowers = False,
-    test = False # internal
+    notifyFollowers = False
 ):
     data = {
         'title': title,
@@ -61,15 +59,15 @@ def post_article(
         'notifyFollowers': notifyFollowers
     }
 
-    return post(f"https://api.medium.com/v1/users/{get_user_id(test)}/posts",
+    return post(f"https://api.medium.com/v1/users/{get_user_id()}/posts",
                 data = data,
-                headers = auth_header(test = test))
+                headers = auth_header())
 
 # Cell
 import random
 from io import BytesIO
 
-def post_image(filename = None, img = None, test = False):
+def post_image(filename = None, img = None):
     """
     filename: needs to be a valid image file path supported my Medium
     img: can be a binary image representation
@@ -83,5 +81,5 @@ def post_image(filename = None, img = None, test = False):
     }
     img.close() if img is None else 1
     return post(f"https://api.medium.com/v1/images",
-                headers = auth_header(test = test),
+                headers = auth_header(),
                 files = files)
