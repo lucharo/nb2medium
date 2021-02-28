@@ -1,0 +1,12 @@
+Type: Jupyter Notebook Extension
+Name: nb2medium
+Section: notebook
+Description: nb2medium Menu
+tags:
+- Medium
+- Blogging
+- Jupyter-notebooks
+Link: README.md
+Icon: jupytext_menu_zoom.png
+Main: nb2medium.js
+Compatibility: 5.x, 6.x

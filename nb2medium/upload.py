@@ -19,8 +19,10 @@ import logging
 def nb2medium(
     title,
     notebook,
-    log_level = logging.INFO
+    log_level = 'info'
 ):
+
+    if isinstance(log_level, str): log_level = log_level.upper()
 
     # convert logger
     init_logger('converter', log_level)
