@@ -22,29 +22,42 @@ define([
 ) {
     "use strict";
     
-    
-    function handlePythonConsole(data) {
-        console.log(data.content.text)
-    }
-    
-    function handlePythonDialog(data) {
-        dialog.modal({
-            title: i18n.msg._('Uploading notebook to Medium...'),
-            body: data.content.text
-            });
-    }
-    
-    function execPython(command, handleOutput) {
-        
-        var callback = {
-            iopub: {output: data => handleOutput(data)}
-        }
-        
-        Jupyter.notebook.kernel.execute(command, callback);  
+    // I believe tje Jupyter JS api stops taking values after the first stderr 
+    // stream comes in, even if the python keeps executuing, run python command
+    // outputting data, data.content to check this. And unfortunately the logging 
+    // output is seen as stderr
+    const pythonPromise = function(python) {
+        return new Promise((resolve, reject) => {
+            var callbacks = {
+                iopub: {
+                    output: (data) => {resolve(data.content.text)
+                    }
+                }
+            };
+            Jupyter.notebook.kernel.execute(python, callbacks);    
+        });
     }
 
+    const pythonExecute = async(python, log_mode) => {
+        let pythonResult = await pythonPromise(python);
+        // here pythonResult is a variable I can manipulate
+        // e.g. pythonResult.toUpperCase();
+        // do smth here
+        if (log_mode == 'console') {
+            console.log(pythonResult)
+        } else if (log_mode == 'UI') {
+            dialog.modal({
+                title: "Notebook upload report!", 
+                body: i18n.msg.sprintf(i18n.msg._('%s'), pythonResult),
+                buttons: {
+                    'OK': {'class' : 'btn-primary'}
+                }
+            });
+        }          
+    }
+    
     // say hi from python, test that execPython works
-    execPython("print('Hi from python')", handlePythonConsole)
+    const res = pythonExecute("print('Hello from Python!')", 'console')
     
     function nb2mediumButton() {
         
@@ -62,10 +75,18 @@ define([
     }
     
    var py2js = function(log_level, nb_name, nb_title){
-       let pycommand = execPython(`
+       let pycommand = pythonExecute(`
         from nb2medium.upload import nb2medium
-        n2medium_request = nb2medium(title = '`+ nb_title + `',notebook = './` + nb_name + `',log_level = '`+log_level+`')`,
-      handlePythonDialog)
+from io import StringIO
+from contextlib import redirect_stdout
+f = StringIO()
+with redirect_stdout(f):
+    n2medium_request = nb2medium(
+        title = 'hi',
+        notebook = './test-gist-output-df.ipynb',
+        log_level = 'debug',
+        log_to_stdout = True)
+print(f.getvalue())`, 'UI')
    }
     
    var nb2mediumRun = function() {
@@ -74,7 +95,11 @@ define([
         var nb_title = prompt("What title would you like to give to this article?", "My Great Article")
         dialog.modal({
             title: i18n.msg._('Upload notebook to Medium'),
-            body: i18n.msg.sprintf(i18n.msg._("How would you like to upload the notebook %s ?", nb_title)),
+            body: $('<a/>').attr('href', '#')
+                .addClass(':checkbox')
+                .attr('data-toggle', 'dropdown')
+                .text('How would you like to upload the notebook?')
+                .attr('title', 'How would you like to upload the notebook?'),
             buttons: {'Upload notebook to Medium': {
                         'class' : 'btn-primary',
                         'click' : () => py2js('info', nb_name, nb_title)},
@@ -83,7 +108,6 @@ define([
                         'click': () => py2js('debug', nb_name, nb_title)}
             }
         });
-
 
     };
     
@@ -157,11 +181,7 @@ define([
                 // nb2medium button
                 nb2mediumButton();
             })
-        }
-        
-      
-
-        
+        }      
     };
 
     return {

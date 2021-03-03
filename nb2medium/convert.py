@@ -13,8 +13,12 @@ import logging
 from io import StringIO
 # create stream for asserts
 log_stream = StringIO()
+import sys
 
-def init_logger(name, level = logging.INFO):
+def init_logger(name, level = logging.INFO, log_to_stdout = False):
+    """
+    stream_to_sdout: if true, prints all logging (otherwise seen as stderr)
+    """
     #delete loggger handler if it exists
     if len(logging.getLogger(name).handlers) != 0:
         logging.getLogger(name).\
@@ -27,12 +31,13 @@ def init_logger(name, level = logging.INFO):
     logger.setLevel(level)
 
     # create console handler and set level to debug
-    ch = logging.StreamHandler()
+    ch = logging.StreamHandler() \
+        if not log_to_stdout else logging.StreamHandler(sys.stdout)
     ch.setLevel(level)
 
     # assert/test handlers
     assertch = logging.StreamHandler(log_stream)
-    ch.setLevel(level)
+    assertch.setLevel(level)
 
     # create formatter
     formatter = logging.Formatter('%(name)s:%(levelname)s - %(message)s')

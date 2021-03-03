@@ -19,14 +19,15 @@ import logging
 def nb2medium(
     title,
     notebook,
-    log_level = 'info'
+    log_level = 'info',
+    log_to_stdout = False
 ):
 
     if isinstance(log_level, str): log_level = log_level.upper()
 
     # convert logger
-    init_logger('converter', log_level)
-    init_logger('uploader', log_level)
+    init_logger('converter', log_level, log_to_stdout = log_to_stdout)
+    init_logger('uploader', log_level, log_to_stdout = log_to_stdout)
     upload_logger = logging.getLogger('uploader')
     if not os.getenv('MEDIUM_TOKEN'):
         upload_logger.critical('MEDIUM_TOKEN not found, please make sure MEDIUM_TOKEN is defined')
