@@ -22,7 +22,102 @@ define([
 ) {
     "use strict";
     
-    // I believe tje Jupyter JS api stops taking values after the first stderr 
+    
+    var articleSubmitDialog = function () {
+        // to learn how to write a Jupyter notebook extension
+        // dialog, check the dialog.modal source code at https://github.com/jupyter/notebook/blob/bc28d6123117c3c733697e27e9d4bd71d7f0c46b/notebook/static/base/js/dialog.js
+        // and google jquery help
+        var articleTitleInputBox = $('<input>')
+            .attr('type', 'text')
+            .attr('placeholder', "Enter your article's title")
+            .addClass('txt-articletitle')
+                
+        var submitArticle = $('<button>')
+            .attr('type', 'button')
+            .addClass('btn-submitarticle')
+            .append('Submit')
+        
+
+        var submittedArticle = $('<span>')
+            .attr('id', 'submitted-title')
+        
+        // the thing below is called event delegation in 
+        // dynamically generated elements
+        // read more at 
+        // https://stackoverflow.com/questions/203198/event-binding-on-dynamically-created-elements
+        $(document).on(
+            'click', '.btn-submitarticle',
+            function(){
+                var articleTitle = $(".txt-articletitle").val();
+                var isDebug = $('#debugFlag').prop('checked')
+                console.log('[nb2medium] Article submitted as :'+articleTitle)
+                // could add a spinner here
+                pythonSubmitArticleScript(articleTitle,
+                                          Jupyter.notebook.notebook_name,
+                                          isDebug ? 'debug' : 'info')
+            }
+        )
+        
+
+        
+        var debugCheckbox = $('<input>')
+            .attr('type', 'checkbox')
+            .attr('id', 'debugFlag')
+        
+        
+        $(document).on(
+            'change', '#debugFlag',
+            function() {
+                var currState = $('#debugFlag').prop('checked');
+                $('#debugFlag').attr('checked', !currState)
+                console.log('[nb2medium] Debug flag set to: ' + currState)
+            }
+        );
+                
+        var pythonOutput = $('<div>')
+            .attr('id','nb2medium-output-container')
+            .append(
+                $('<div>')
+                .addClass('row list_header')
+                .append(
+                    $('<span>')
+                    .attr('id','nb2medium-output')
+                )
+            );
+        
+        var dialogform = $('<div/>')
+            .attr('title', i18n.msg._('Submit notebook to Medium'))
+            .addClass('dialogform')
+            .append('Provide a title for your article and submit as a draft')
+            .append('<br />')
+            .append(articleTitleInputBox)
+            .append(submitArticle)
+            .append($('<div>')
+                    .append(debugCheckbox)
+                    .append(' Submit in <strong>debug mode</strong>')
+            )
+            .append(pythonOutput)
+            //.append($('<div>')
+            //      .append('Executing')
+           
+
+        dialog.modal({
+            title: 'Upload notebook as Medium draft',
+            body: dialogform,
+            position: 'center',
+            buttons: {Cancel: {}},  
+            // the keyboard manager argument is passed
+            // so that the dialog is aware of keybindings
+            // otheriwse for e.g. pressing f in dialog mode would
+            // trigger the find+replace dialog, etc...
+            keyboard_manager: Jupyter.notebook.keyboard_manager
+        })
+ 
+    
+    }
+    
+    
+    // I believe the Jupyter JS api stops taking values after the first stderr 
     // stream comes in, even if the python keeps executuing, run python command
     // outputting data, data.content to check this. And unfortunately the logging 
     // output is seen as stderr
@@ -30,10 +125,23 @@ define([
         return new Promise((resolve, reject) => {
             var callbacks = {
                 iopub: {
-                    output: (data) => {resolve(data.content.text)
-                    }
+                    output: (data) => {
+                        if (data.msg_type == "error") {
+                            reject(data.content.ename + ': ' + 
+                                   data.content.evalue +' Traceback:' + data.content.traceback[0]
+                            )
+                        }
+                        else if (data.msg_type == 'stream') {
+                            resolve(data.content.text)
+                        } else {
+                            reject(
+                                alert("nb2medium was not ready for this, please raise an issue with your setup")
+                            )
+                        }
+                    } 
                 }
             };
+
             Jupyter.notebook.kernel.execute(python, callbacks);    
         });
     }
@@ -43,24 +151,37 @@ define([
         // here pythonResult is a variable I can manipulate
         // e.g. pythonResult.toUpperCase();
         // do smth here
-        if (log_mode == 'console') {
-            console.log(pythonResult)
-        } else if (log_mode == 'UI') {
-            dialog.modal({
-                title: "Notebook upload report!", 
-                body: i18n.msg.sprintf(i18n.msg._('%s'), pythonResult),
-                buttons: {
-                    'OK': {'class' : 'btn-primary'}
-                }
-            });
-        }          
+        $('#nb2medium-output').html(pythonResult)
+        console.log(pythonResult)
     }
+        
+
+   var pythonSubmitArticleScript = function(nbTitle, nbName, logLevel){
+       let pycommand = pythonExecute(`
+from nb2medium.upload import nb2medium
+from io import StringIO
+import re
+from contextlib import redirect_stdout
+
+f = StringIO()
+with redirect_stdout(f): n2medium_request = nb2medium(title = '`+nbTitle+`',
+notebook = './`+nbName+`',
+log_level = '`+logLevel+`',
+log_to_stdout = True)
+out = f.getvalue()
+url = re.search("(https://medium.com.*)\\n", out).group(1)
+out = re.sub(url, f"<a target='_blank' href='{url}'>{url}</a>", out)
+print(re.sub('\\n', '<br />', out))
+`)
+   }
     
-    // say hi from python, test that execPython works
-    const res = pythonExecute("print('Hello from Python!')", 'console')
+   var nb2mediumRun = function() {
+        articleSubmitDialog();
+    };
+    
     
     function nb2mediumButton() {
-        
+
         var action = {
             icon: 'fa-medium', // a font-awesome class used on buttons, etc
             help    : 'Upload notebook to Medium',
@@ -71,45 +192,8 @@ define([
 
         var full_action_name = Jupyter.actions.register(action, action_name, prefix); 
         Jupyter.toolbar.add_buttons_group([full_action_name]);
-        
-    }
-    
-   var py2js = function(log_level, nb_name, nb_title){
-       let pycommand = pythonExecute(`
-        from nb2medium.upload import nb2medium
-from io import StringIO
-from contextlib import redirect_stdout
-f = StringIO()
-with redirect_stdout(f):
-    n2medium_request = nb2medium(
-        title = 'hi',
-        notebook = './test-gist-output-df.ipynb',
-        log_level = 'debug',
-        log_to_stdout = True)
-print(f.getvalue())`, 'UI')
-   }
-    
-   var nb2mediumRun = function() {
-        var nb_name = Jupyter.notebook.notebook_name
-        var nb_path = Jupyter.notebook.notebook_path
-        var nb_title = prompt("What title would you like to give to this article?", "My Great Article")
-        dialog.modal({
-            title: i18n.msg._('Upload notebook to Medium'),
-            body: $('<a/>').attr('href', '#')
-                .addClass(':checkbox')
-                .attr('data-toggle', 'dropdown')
-                .text('How would you like to upload the notebook?')
-                .attr('title', 'How would you like to upload the notebook?'),
-            buttons: {'Upload notebook to Medium': {
-                        'class' : 'btn-primary',
-                        'click' : () => py2js('info', nb_name, nb_title)},
-                      'Upload in debugging mode': {
-                        'class' : 'btn-secondary',
-                        'click': () => py2js('debug', nb_name, nb_title)}
-            }
-        });
 
-    };
+    }
     
     async function nb2mediumSaveAndUpload () {
         await Jupyter.notebook.save_notebook();
@@ -181,7 +265,8 @@ print(f.getvalue())`, 'UI')
                 // nb2medium button
                 nb2mediumButton();
             })
-        }      
+        }     
+        
     };
 
     return {

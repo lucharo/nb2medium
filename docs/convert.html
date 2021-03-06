@@ -26,20 +26,6 @@ nb_path: "nbs/01_convert.ipynb"
     
 <div class="cell border-box-sizing code_cell rendered">
 
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>converter:DEBUG - GITHUB_TOKEN environment variable found.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     {% endraw %}
 
@@ -241,6 +227,16 @@ nb_path: "nbs/01_convert.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">init_logger</span><span class="p">(</span><span class="s1">&#39;converter&#39;</span><span class="p">,</span> <span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 </div>
     {% endraw %}
@@ -527,7 +523,7 @@ converter:CRITICAL - critical message
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="WriteMarkdown" class="doc_header"><code>WriteMarkdown</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L57" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WriteMarkdown</code>(<strong><code>body</code></strong>, <strong><code>resources</code></strong>, <strong><code>dir_path</code></strong>=<em><code>None</code></em>, <strong><code>filename</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="WriteMarkdown" class="doc_header"><code>WriteMarkdown</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L54" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>WriteMarkdown</code>(<strong><code>body</code></strong>, <strong><code>resources</code></strong>, <strong><code>dir_path</code></strong>=<em><code>None</code></em>, <strong><code>filename</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>body &amp; resources are the output of any Jupyter nbconvert <code>Exporter</code>.
 dir_path should be a relative path with respect to the current working directory.
@@ -864,7 +860,7 @@ filename should be the output document's name</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="HidePreprocessor" class="doc_header"><code>class</code> <code>HidePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L83" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>HidePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="HidePreprocessor" class="doc_header"><code>class</code> <code>HidePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L80" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>HidePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that hides cell's body and only keeps the output based on regex matching</p>
 
@@ -1058,7 +1054,7 @@ print(&#39;My name is Jack&#39;)
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="check_gh_auth" class="doc_header"><code>check_gh_auth</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L120" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>check_gh_auth</code>()</p>
+<h4 id="check_gh_auth" class="doc_header"><code>check_gh_auth</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L117" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>check_gh_auth</code>()</p>
 </blockquote>
 
 </div>
@@ -1089,7 +1085,7 @@ print(&#39;My name is Jack&#39;)
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="upload_gist" class="doc_header"><code>upload_gist</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L134" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_gist</code>(<strong><code>gistname</code></strong>, <strong><code>gistcontent</code></strong>, <strong><code>description</code></strong>=<em><code>''</code></em>, <strong><code>public</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="upload_gist" class="doc_header"><code>upload_gist</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L131" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_gist</code>(<strong><code>gistname</code></strong>, <strong><code>gistcontent</code></strong>, <strong><code>description</code></strong>=<em><code>''</code></em>, <strong><code>public</code></strong>=<em><code>False</code></em>)</p>
 </blockquote>
 <p>description: Description of gist, i.e. some metatext explaining what the gist is about
 gistname: name displayed for the gist, this impacts how the file is rendered based
@@ -1276,7 +1272,7 @@ public: whether the gist should be public or private</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L168" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="GisterPreprocessor" class="doc_header"><code>class</code> <code>GisterPreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L165" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>GisterPreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the #gist tag in a Jupyter Notebook cell,
 uploads the code in that cell as a GitHub gist for the authenticated user and replaces the original cell
@@ -1295,20 +1291,6 @@ for a link to the gist in the resulting markdown file</p>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>converter:DEBUG - GITHUB_TOKEN environment variable found.
-</pre>
-</div>
-</div>
-
-</div>
-</div>
 
 </div>
     {% endraw %}
@@ -1682,7 +1664,7 @@ converter:INFO - Gist script.py.txt.csv from cell 1 succesfully uploaded!
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L316" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
+<h2 id="ImagePreprocessor" class="doc_header"><code>class</code> <code>ImagePreprocessor</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/convert.py#L313" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>ImagePreprocessor</code>(<strong>*<code>args</code></strong>, <strong>**<code>kwargs</code></strong>) :: <code>Preprocessor</code></p>
 </blockquote>
 <p>Preprocessor that detects the presence of the image in a Jupyter Notebook cell's output,
 uploads the image to Medium</p>

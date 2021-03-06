@@ -50,9 +50,6 @@ def init_logger(name, level = logging.INFO, log_to_stdout = False):
     logger.addHandler(assertch)
 
 # Cell
-init_logger('converter', logging.DEBUG)
-
-# Cell
 import os
 def WriteMarkdown(body, resources, dir_path = None, filename = None):
     """
