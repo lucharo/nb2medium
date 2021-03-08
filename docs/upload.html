@@ -1,13 +1,13 @@
 ---
 
-title: Uploader
+title: Upload
 
 
 keywords: fastai
 sidebar: home_sidebar
 
-summary: "We wrap all the functionality of the tools built in the `API` and the `converter` modules to upload the rendered markdown document to Medium"
-description: "We wrap all the functionality of the tools built in the `API` and the `converter` modules to upload the rendered markdown document to Medium"
+summary: "We wrap all the functionality of the tools built in the `mediumapi` and the `convert` modules to upload the rendered markdown document to Medium"
+description: "We wrap all the functionality of the tools built in the `mediumapi` and the `convert` modules to upload the rendered markdown document to Medium"
 nb_path: "nbs/02_upload.ipynb"
 ---
 <!--
@@ -40,7 +40,7 @@ nb_path: "nbs/02_upload.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="nb2medium" class="doc_header"><code>nb2medium</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/upload.py#L19" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>nb2medium</code>(<strong><code>title</code></strong>, <strong><code>notebook</code></strong>, <strong><code>log_level</code></strong>=<em><code>'info'</code></em>, <strong><code>log_to_stdout</code></strong>=<em><code>False</code></em>)</p>
+<h4 id="nb2medium" class="doc_header"><code>nb2medium</code><a href="https://github.com/lc5415/nb2medium/tree/master/nb2medium/upload.py#L20" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>nb2medium</code>(<strong><code>title</code></strong>:"The title of your article", <strong><code>notebook</code></strong>:"Path to your notebook", <strong><code>log_level</code></strong>:"The minimum reported logging level (debug, info, warning, error or critical)"=<em><code>'info'</code></em>, <strong><code>log_to_stdout</code></strong>:"Whether logging should be redirected to stdout (internal use)"=<em><code>False</code></em>)</p>
 </blockquote>
 
 </div>
@@ -92,7 +92,7 @@ converter:INFO - Gist pandas-doubleupload.py from cell 33 succesfully uploaded!
 converter:INFO - Gist pandas-doubleupload.py.csv from cell 33 succesfully uploaded!
 converter:INFO - Detected 4 plots and 2 local images in notebook.
 converter:INFO - Markdown document written to ../samples/test-notebook/test-notebook.md
-uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/d13912b13a05
+uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/5b2bc2673bd8
 </pre>
 </div>
 </div>
@@ -105,8 +105,20 @@ uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook 
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I use to <code>log_to_stdout</code> argument to fix an issue with JS Jupyter nbextension API.</p>
+<h3 id="CLI">CLI<a class="anchor-link" href="#CLI"> </a></h3>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>nb2medium can both be used from python or as a CLI thanks to the amazing <code>@call_parse</code> decorator developed by fastcore. You can use <a href="/nb2medium/upload.html#nb2medium"><code>nb2medium</code></a> from the command line in the following way</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="To-get-the-help">To get the help<a class="anchor-link" href="#To-get-the-help"> </a></h4>
 </div>
 </div>
 </div>
@@ -117,9 +129,7 @@ uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook 
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_article</span> <span class="o">=</span> <span class="n">nb2medium</span><span class="p">(</span><span class="n">title</span> <span class="o">=</span> <span class="s1">&#39;First test&#39;</span><span class="p">,</span>
-                          <span class="n">notebook</span> <span class="o">=</span> <span class="s1">&#39;../samples/test-notebook.ipynb&#39;</span><span class="p">,</span>
-                         <span class="n">log_to_stdout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>nb2medium --help
 </pre></div>
 
     </div>
@@ -132,18 +142,18 @@ uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>converter:INFO - Found a hide-source tag in cell #35.
-converter:INFO - Found a hide-output tag in cell #36.
-converter:INFO - Found a hide-cell tag in cell #37.
-converter:INFO - Gist notebooktest.py from cell 26 succesfully uploaded!
-converter:INFO - Gist print.py from cell 27 succesfully uploaded!
-converter:INFO - Gist pandas.py from cell 30 succesfully uploaded!
-converter:INFO - Gist pandas.py.csv from cell 30 succesfully uploaded!
-converter:INFO - Gist pandas-doubleupload.py from cell 33 succesfully uploaded!
-converter:INFO - Gist pandas-doubleupload.py.csv from cell 33 succesfully uploaded!
-converter:INFO - Detected 4 plots and 2 local images in notebook.
-converter:INFO - Markdown document written to ../samples/test-notebook/test-notebook.md
-uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/9470cedfb8a7
+<pre>usage: nb2medium [-h] [--log_level LOG_LEVEL] [--log_to_stdout] title notebook
+
+positional arguments:
+  title                  The title of your article
+  notebook               Path to your notebook
+
+optional arguments:
+  -h, --help             show this help message and exit
+  --log_level LOG_LEVEL  The minimum reported logging level (debug, info,
+                         warning, error or critical) (default: info)
+  --log_to_stdout        Whether logging should be redirected to stdout
+                         (internal use) (default: False)
 </pre>
 </div>
 </div>
@@ -154,6 +164,62 @@ uploader:INFO - Draft of &#39;First test&#39; from test-notebook.ipynb notebook 
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Uploading-article-through-the-CLI">Uploading article through the CLI<a class="anchor-link" href="#Uploading-article-through-the-CLI"> </a></h4>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Both the <code>title</code> and <code>notebook</code> arguments are positional and hence you need to pass them in order in addition to that if your <code>title</code> contains any spaces you will need to put it between double or single quotes.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span>%%sh
+nb2medium <span class="s2">&quot;My really cool article&quot;</span> ../samples/test-gist-output-df.ipynb
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>converter:INFO - Gist pandas.py from cell 0 succesfully uploaded!
+converter:INFO - Gist pandas.py.csv from cell 0 succesfully uploaded!
+converter:INFO - Detected 0 plots and 0 local images in notebook.
+converter:INFO - Markdown document written to ../samples/test-gist-output-df/test-gist-output-df.md
+uploader:INFO - Draft of &#39;My really cool article&#39; from test-gist-output-df.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/1aa29832faec
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Note:</em> I am using the <code>%%sh</code> and the shebang <code>!</code> magic to emulate what you would usually run from bash, zshell or your preferred shell</p>
+
+</div>
+</div>
+</div>
 </div>
  
 

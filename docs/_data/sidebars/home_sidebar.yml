@@ -16,7 +16,7 @@ entries:
       title: Convert
       url: convert.html
     - output: web,pdf
-      title: Uploader
+      title: Upload
       url: upload.html
     output: web
     title: nb2medium

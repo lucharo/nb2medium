@@ -23,7 +23,7 @@ export GITHUB_TOKEN=<your-github-token>
 
 nb2medium uploads Jupyter notebooks as they are, the notebooks do not get executed before being rendered.
 
-```python
+```
 from nb2medium.upload import nb2medium
 
 nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');
