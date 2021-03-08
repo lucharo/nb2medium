@@ -2,6 +2,8 @@
 > Python package and Jupyter extension that enables submitting Medium drafts elegantly from a Jupyter Notebook
 
 
+[![Testing](https://github.com/lucharo/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lucharo/nb2medium/actions/workflows/main.yml)
+
 nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as `nbconvert` or the `requests` package for its main functionality. Moreover the package is build using `nbdev` from Jeremy Howard and the fastai team, which is claimed to accelerate development time.
 
 ## Install
@@ -21,7 +23,7 @@ export GITHUB_TOKEN=<your-github-token>
 
 nb2medium uploads Jupyter notebooks as they are, the notebooks do not get executed before being rendered.
 
-```
+```python
 from nb2medium.upload import nb2medium
 
 nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');

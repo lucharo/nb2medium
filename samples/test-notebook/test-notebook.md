@@ -120,26 +120,26 @@ plt.grid();
 
 Simple variable definition gist
 
-[https://gist.github.com/79a4e389355446390414fefb533b198f](https://gist.github.com/79a4e389355446390414fefb533b198f)
+[https://gist.github.com/68846ab0104775f33cecb5a46b2adcaf](https://gist.github.com/68846ab0104775f33cecb5a46b2adcaf)
 
 
-[https://gist.github.com/e8f1c117a53782022a93cf236f850ebf](https://gist.github.com/e8f1c117a53782022a93cf236f850ebf)
+[https://gist.github.com/e4de2ad1e78b11d76974078b316133c7](https://gist.github.com/e4de2ad1e78b11d76974078b316133c7)
 
 
 ### Pandas dataframes as CSV gists
 
 When we specify the flag `upload: output`, `nb2medium` will upload the output of the cell in a suitable format
 
-[https://gist.github.com/01306f7ef072fc33646e388bb26a9400](https://gist.github.com/01306f7ef072fc33646e388bb26a9400)
+[https://gist.github.com/8fd5671aad222f0f75f4906c3ca95535](https://gist.github.com/8fd5671aad222f0f75f4906c3ca95535)
 
 
 ### Uploading both code and dataframe as gists
 
 We can achieve this by specifying the flag `upload: both`
 
-[https://gist.github.com/1c660c3d0b7e7eb1f1bf58a8cc14ea75](https://gist.github.com/1c660c3d0b7e7eb1f1bf58a8cc14ea75)
+[https://gist.github.com/a0e1f96fcb049fbbcee98dae17c86c4b](https://gist.github.com/a0e1f96fcb049fbbcee98dae17c86c4b)
 
-[https://gist.github.com/823b933386b322e6c04ef0584626536a](https://gist.github.com/823b933386b322e6c04ef0584626536a)
+[https://gist.github.com/e1ec17b0d4771ef508878e0ba69a16db](https://gist.github.com/e1ec17b0d4771ef508878e0ba69a16db)
 
 
 ### Hiding cells
