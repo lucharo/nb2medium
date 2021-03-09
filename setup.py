@@ -24,6 +24,31 @@ requirements = cfg.get('requirements','').split()
 lic = licenses[cfg['license']]
 min_python = cfg['min_python']
 
+setup_cfg["package_data"] = {"nb2medium": ["nbextension/*.*"]}
+setup_cfg["data_files"] = [
+    (
+        "etc/jupyter/nbconfig/notebook.d",
+        ["jupyter-config/nbconfig/notebook.d/nb2medium.json"],
+    ),
+    (
+        "etc/jupyter/jupyter_notebook_config.d",
+        ["jupyter-config/jupyter_notebook_config.d/nb2medium.json"],
+    ),
+    (
+        "etc/jupyter/jupyter_server_config.d",
+        ["jupyter-config/jupyter_server_config.d/nb2medium.json"],
+    ),
+    (
+        "share/jupyter/nbextensions/nb2medium",
+        [
+            "nb2medium/nbextension/nb2medium.js",
+            "nb2medium/nbextension/README.md",
+            "nb2medium/nbextension/nb2medium.png",
+            "nb2medium/nbextension/nb2medium.yml",
+        ],
+    ),
+]
+
 setuptools.setup(
     name = cfg['lib_name'],
     license = lic[0],

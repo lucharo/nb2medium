@@ -1,6 +1,6 @@
-# A Jupyter notebook extension for Jupytext
+# A Jupyter notebook extension for nb2medium
 
-This extension adds a [Jupytext](https://github.com/mwouts/jupytext/blob/master/README.md) menu to Jupyter notebook. Use the menu to select the desired ipynb/text pairing for your notebook.
+This extension adds an [nb2medium](https://github.com/lucharo/nb2medium/blob/master/README.md) menu to Jupyter notebook. Use the menu to upload your notebook as a Medium draft. Alternatively you can use a button on the tool bar with an M icon.
 
 ![Jupytext menu screenshot](jupytext_menu.png)
 

@@ -23,8 +23,8 @@ modules = ["mediumapi.py",
            "convert.py",
            "upload.py"]
 
-doc_url = "https://lc5415.github.io/nb2medium/"
+doc_url = "https://lucharo.github.io/nb2medium/"
 
-git_url = "https://github.com/lc5415/nb2medium/tree/master/"
+git_url = "https://github.com/lucharo/nb2medium/tree/master/"
 
 def custom_doc_links(name): return None

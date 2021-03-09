@@ -127,11 +127,13 @@ define([
                 iopub: {
                     output: (data) => {
                         if (data.msg_type == "error") {
-                            reject(data.content.ename + ': ' + 
-                                   data.content.evalue +' Traceback:' + data.content.traceback[0]
+                            reject($('#nb2medium-output').text(
+                                data.content.ename + ': ' + 
+                                data.content.evalue +' Traceback:' + data.content.traceback[0])
                             )
                         }
                         else if (data.msg_type == 'stream') {
+                            // from print
                             resolve(data.content.text)
                         } else {
                             reject(

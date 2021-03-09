@@ -1,0 +1,5 @@
+{
+  "load_extensions": {
+    "nb2medium/nb2medium": true
+  }
+}
