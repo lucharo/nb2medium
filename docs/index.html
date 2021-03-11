@@ -38,7 +38,14 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as <code>nbconvert</code> or the <code>requests</code> package for its main functionality. Moreover the package is build using <code>nbdev</code> from Jeremy Howard and the fastai team, which is claimed to accelerate development time.</p>
+<p>nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as <code>nbconvert</code> or the <code>requests</code> package for its main functionality. Moreover the package is developed using <code>nbdev</code> from Jeremy Howard and the fastai team, which is claimed to accelerate development an debugging time.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><img src="/nb2medium/nb2medium/nbextension/dialog.png" alt=""></p>
 
 </div>
 </div>
@@ -58,6 +65,18 @@ nb_path: "nbs/index.ipynb"
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>Then enable the notebook extension by running:</p>
+<div class="highlight"><pre><span></span>jupyter notebook install nb2medium --py
+jupyter notebook <span class="nb">enable</span> nb2medium --py
+</pre></div>
+<p>Add <code>--user</code> to these commands if you want to activate the extension only for the current user.\
+Add <code>--sys-prefix</code> to these commands if you want to activate the extension only in current virtual environment.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Setup">Setup<a class="anchor-link" href="#Setup"> </a></h2>
 </div>
 </div>
@@ -69,6 +88,8 @@ Both token should be available as environment variables, hence we recommend you 
 <div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MEDIUM_TOKEN</span><span class="o">=</span>&lt;your-medium-token&gt;
 <span class="nb">export</span> <span class="nv">GITHUB_TOKEN</span><span class="o">=</span>&lt;your-github-token&gt;
 </pre></div>
+<p><strong>Obtain an Medium Integration Token from <a href="https://medium.com/me/settings">your Medium settings page</a>\
+Obtain a GitHub token by following <a href="https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token">GitHub's docs</a></strong></p>
 
 </div>
 </div>
@@ -108,11 +129,18 @@ Both token should be available as environment variables, hence we recommend you 
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>converter:DEBUG - GITHUB_TOKEN environment variable found.
+<pre>converter:INFO - Found a hide-source tag in cell #35.
+converter:INFO - Found a hide-output tag in cell #36.
+converter:INFO - Found a hide-cell tag in cell #37.
+converter:INFO - Gist notebooktest.py from cell 26 succesfully uploaded!
+converter:INFO - Gist print.py from cell 27 succesfully uploaded!
+converter:INFO - Gist pandas.py from cell 30 succesfully uploaded!
+converter:INFO - Gist pandas.py.csv from cell 30 succesfully uploaded!
+converter:INFO - Gist pandas-doubleupload.py from cell 33 succesfully uploaded!
+converter:INFO - Gist pandas-doubleupload.py.csv from cell 33 succesfully uploaded!
 converter:INFO - Detected 4 plots and 2 local images in notebook.
-converter:INFO - Detected 4 plots and 2 local images in notebook.
-converter:INFO - Markdown document written to ../samples/test-notebook.md
-converter:INFO - Markdown document written to ../samples/test-notebook.md
+converter:INFO - Markdown document written to ../samples/test-notebook/test-notebook.md
+uploader:INFO - Draft of &#39;My First Article&#39; from test-notebook.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/946f9176365b
 </pre>
 </div>
 </div>
@@ -147,7 +175,7 @@ If the image is the result of a plot, such as:</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 <p>The result of the image is uploaded to the Medium endpoint (without being written to memory) and the corresponding plot is replaced by the plot's URL.</p>
-<p>If the image is already online, nothing changes to it,</p>
+<p>If the image is already online, nothing changes to it, as Medium can access it directly from the internet when loading the article</p>
 
 </div>
 </div>
@@ -221,6 +249,32 @@ pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})</code></pre>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;One&#39;</span><span class="p">,</span> <span class="s1">&#39;Two&#39;</span><span class="p">,</span> <span class="s1">&#39;Three&#39;</span><span class="p">]})</span>
 </pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Documentation">Documentation<a class="anchor-link" href="#Documentation"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The docs are available at <a href="https://lucharo.github.io/nb2medium">https://lucharo.github.io/nb2medium</a> and are rendered automatically from the <code>nbdev</code> notebooks so they are always up to date with the package source code</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Contributing">Contributing<a class="anchor-link" href="#Contributing"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you find a bug or think of an enhancement feel free to raise issues or submit pull requests. If you want to contribute to open source projects such as this one have a look at the issues with the label/tag <code>help needed</code> in particular.</p>
 
 </div>
 </div>

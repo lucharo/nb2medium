@@ -69,4 +69,11 @@ def nb2medium(
         content = open(md_home).read()
     )
 
-    upload_logger.info(f"Draft of '{title}' from {os.path.basename(notebook)} notebook uploaded to Medium: {post_request.json()['data']['url']}")
+    if post_request.ok:
+        upload_logger.info(f"Draft of '{title}' from {os.path.basename(notebook)} notebook uploaded to Medium: {post_request.json()['data']['url']}")
+    else:
+        upload_logger.error(f"Could not upload draft of '{title}' from {os.path.basename(notebook)} notebook!!")
+        raise Exception(f"Could not upload the draft because of an error \
+        submitting to medium:\n \
+        post request error reason -> {post_request.reason},\n \
+        post request response code -> {post_request.status_code}")

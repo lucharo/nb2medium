@@ -4,11 +4,21 @@
 
 [![Testing](https://github.com/lucharo/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lucharo/nb2medium/actions/workflows/main.yml)
 
-nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as `nbconvert` or the `requests` package for its main functionality. Moreover the package is build using `nbdev` from Jeremy Howard and the fastai team, which is claimed to accelerate development time.
+nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as `nbconvert` or the `requests` package for its main functionality. Moreover the package is developed using `nbdev` from Jeremy Howard and the fastai team, which is claimed to accelerate development an debugging time.
+
+![](nbs/nb2medium/nbextension/dialog.png)
 
 ## Install
 
 `pip install nb2medium`
+
+Then enable the notebook extension by running:
+```bash
+jupyter notebook install nb2medium --py
+jupyter notebook enable nb2medium --py
+```
+Add `--user` to these commands if you want to activate the extension only for the current user.\
+Add `--sys-prefix` to these commands if you want to activate the extension only in current virtual environment.
 
 ## Setup
 
@@ -19,21 +29,31 @@ export MEDIUM_TOKEN=<your-medium-token>
 export GITHUB_TOKEN=<your-github-token>
 ```
 
+**Obtain an Medium Integration Token from [your Medium settings page](https://medium.com/me/settings)\
+Obtain a GitHub token by following [GitHub's docs](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)**
+
 ## How to use
 
 nb2medium uploads Jupyter notebooks as they are, the notebooks do not get executed before being rendered.
 
-```
+```python
 from nb2medium.upload import nb2medium
 
 nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');
 ```
 
-    converter:DEBUG - GITHUB_TOKEN environment variable found.
+    converter:INFO - Found a hide-source tag in cell #35.
+    converter:INFO - Found a hide-output tag in cell #36.
+    converter:INFO - Found a hide-cell tag in cell #37.
+    converter:INFO - Gist notebooktest.py from cell 26 succesfully uploaded!
+    converter:INFO - Gist print.py from cell 27 succesfully uploaded!
+    converter:INFO - Gist pandas.py from cell 30 succesfully uploaded!
+    converter:INFO - Gist pandas.py.csv from cell 30 succesfully uploaded!
+    converter:INFO - Gist pandas-doubleupload.py from cell 33 succesfully uploaded!
+    converter:INFO - Gist pandas-doubleupload.py.csv from cell 33 succesfully uploaded!
     converter:INFO - Detected 4 plots and 2 local images in notebook.
-    converter:INFO - Detected 4 plots and 2 local images in notebook.
-    converter:INFO - Markdown document written to ../samples/test-notebook.md
-    converter:INFO - Markdown document written to ../samples/test-notebook.md
+    converter:INFO - Markdown document written to ../samples/test-notebook/test-notebook.md
+    uploader:INFO - Draft of 'My First Article' from test-notebook.ipynb notebook uploaded to Medium: https://medium.com/@lucha6/946f9176365b
 
 
 ### Images, code cells and tables
@@ -53,7 +73,7 @@ plt.plot(x,y)
 ```
 The result of the image is uploaded to the Medium endpoint (without being written to memory) and the corresponding plot is replaced by the plot's URL.
 
-If the image is already online, nothing changes to it,
+If the image is already online, nothing changes to it, as Medium can access it directly from the internet when loading the article
 
 #### Code cells as GitHub gists
 
@@ -99,3 +119,11 @@ Medium does not have good support for HTML nor Markdown tables. My preferred exi
 import pandas as pd
 pd.DataFrame({'a': [1,2,3], 'b': [0,0,0], 'c': ['One', 'Two', 'Three']})
 ```
+
+## Documentation
+
+The docs are available at [https://lucharo.github.io/nb2medium](https://lucharo.github.io/nb2medium) and are rendered automatically from the `nbdev` notebooks so they are always up to date with the package source code
+
+## Contributing
+
+If you find a bug or think of an enhancement feel free to raise issues or submit pull requests. If you want to contribute to open source projects such as this one have a look at the issues with the label/tag `help needed` in particular.

@@ -127,13 +127,12 @@ define([
                 iopub: {
                     output: (data) => {
                         if (data.msg_type == "error") {
-                            reject($('#nb2medium-output').text(
-                                data.content.ename + ': ' + 
-                                data.content.evalue +' Traceback:' + data.content.traceback[0])
-                            )
+                            err = data.content.ename + ': ' +
+                            data.content.evalue +' Traceback:' + data.content.traceback[0]
+                            reject($('#nb2medium-output').text(err))
                         }
                         else if (data.msg_type == 'stream') {
-                            // from print
+                            // output from python print
                             resolve(data.content.text)
                         } else {
                             reject(
@@ -171,8 +170,9 @@ notebook = './`+nbName+`',
 log_level = '`+logLevel+`',
 log_to_stdout = True)
 out = f.getvalue()
-url = re.search("(https://medium.com.*)\\n", out).group(1)
-out = re.sub(url, f"<a target='_blank' href='{url}'>{url}</a>", out)
+urls = re.findall("(https://.*)\\n", out)
+for url in urls:
+    out = re.sub(re.escape(url), f"<a target='_blank' href='{url}'>{url}</a>", out)
 print(re.sub('\\n', '<br />', out))
 `)
    }
