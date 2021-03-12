@@ -15,7 +15,7 @@
 
 nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as `nbconvert` or the `requests` package for its main functionality. Moreover the package is developed using `nbdev` from Jeremy Howard and the fastai team, which is claimed to accelerate development an debugging time.
 
-![](nbs/nb2medium/nbextension/dialog.png)
+![dialog](https://user-images.githubusercontent.com/47890755/110972057-7b5abb00-8353-11eb-8ddb-21e09dd78ccf.png)
 
 ## Install
 
@@ -49,7 +49,7 @@ You may choose to use nb2medium as a command line tool, directly from python or 
 
 You may choose to use the `nb2medium` under file or the button on the top toolbar
 
-![](nbs/nb2medium/nbextension/menu_and_button.png)
+![menu_and_button](https://user-images.githubusercontent.com/47890755/110972060-7c8be800-8353-11eb-92cd-51d1fb746faf.png)
 
 ### From the CLI
 
