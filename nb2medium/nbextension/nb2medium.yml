@@ -7,6 +7,6 @@ tags:
 - Blogging
 - Jupyter-notebooks
 Link: README.md
-Icon: jupytext_menu_zoom.png
+Icon: nb2medium.png
 Main: nb2medium.js
 Compatibility: 5.x, 6.x
