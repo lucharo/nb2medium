@@ -255,7 +255,20 @@ pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})</code></pre>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">6</span><span class="p">]})</span>
 </pre></div>
-<p>The code block will be uploaded to the user's GitHub as a private gist (by default - can be changed to be made public) and the respective code cell will be replaced by the gist URL. The user can also use the <code>description:</code> and the <code>public:</code> flags in the <code>#gist</code> header, where <code>public:</code> maybe either True or False and description can just be a string (no single or double quotes required - just avoid using the keywords <em>gistname, public or description</em>)</p>
+<p>The code block will be uploaded to the user's GitHub as a private gist (by default - can be changed to be made public) and the respective code cell will be replaced by the gist URL. The user can also use the <code>description:</code> and the <code>public:</code> flags in the <code>#gist</code> header.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>#%gist</code> takes the following arguments:</p>
+<ul>
+<li>gistname: name of script with file extension (critical for correct syntax highlighting, e.g script.py)</li>
+<li>description: [optional] string (no quotes are necessary) describing the gist</li>
+<li>public: [optional - default False] whether gist should be public or not</li>
+<li>output: [optional - default source] whether cell's source, output or both should be uploaded as gists (e.g. <code>upload: both</code>, <code>upload: source</code>)</li>
+</ul>
 
 </div>
 </div>

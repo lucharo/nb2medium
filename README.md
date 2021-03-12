@@ -61,7 +61,7 @@ Use `nb2medium --help` to see all the different options
 
 ### From python
 
-```
+```python
 from nb2medium.upload import nb2medium
 
 nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');
@@ -113,7 +113,14 @@ Though if a GitHub token is available and the user includes the following header
 import pandas as pd
 pd.DataFrame({'a': [1,2,3], 'b': [2,4,6]})
 ```
-The code block will be uploaded to the user's GitHub as a private gist (by default - can be changed to be made public) and the respective code cell will be replaced by the gist URL. The user can also use the `description:` and the `public:` flags in the `#gist` header, where `public:` maybe either True or False and description can just be a string (no single or double quotes required - just avoid using the keywords *gistname, public or description*)
+The code block will be uploaded to the user's GitHub as a private gist (by default - can be changed to be made public) and the respective code cell will be replaced by the gist URL. The user can also use the `description:` and the `public:` flags in the `#gist` header.
+
+The `#%gist` takes the following arguments:
+
+* gistname: name of script with file extension (critical for correct syntax highlighting, e.g script.py)
+* description: [optional] string (no quotes are necessary) describing the gist
+* public: [optional - default False] whether gist should be public or not
+* output: [optional - default source] whether cell's source, output or both should be uploaded as gists (e.g. `upload: both`, `upload: source`)
 
 #### Hiding cells
 

@@ -1,9 +1,9 @@
 package:
   name: nb2medium
-  version: 0.0.1
+  version: 0.0.2
 source:
-  sha256: 8ce8feaa4f79d46806e722c2a99e792e52f599857c37d2749cba2633664eae89
-  url: https://files.pythonhosted.org/packages/2f/a5/9286e8cfcbdf691ebb1fa05120967d2afb277ae70ef2c8b89eacc0a46ffd/nb2medium-0.0.1.tar.gz
+  sha256: 43d7c52492f400aa00d4dcc26fb173dbbfd76b835866ead5ce3c417fd31a1bd4
+  url: https://files.pythonhosted.org/packages/14/09/b3c2f03a14d9f078570f263456f0514b52010175897abb7225d01d879b9e/nb2medium-0.0.2.tar.gz
 about:
   dev_url: https://lucharo.github.io
   doc_url: https://lucharo.github.io
