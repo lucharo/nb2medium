@@ -34,7 +34,23 @@ Obtain a GitHub token by following [GitHub's docs](https://docs.github.com/en/gi
 
 ## How to use
 
-nb2medium uploads Jupyter notebooks as they are, the notebooks do not get executed before being rendered.
+You may choose to use nb2medium as a command line tool, directly from python or using the Jupyter notebook extension button or menu. _Note:_ nb2medium uploads Jupyter notebooks as they are, the notebooks do not get executed before being rendered.
+
+### From the Jupyter notebook
+
+You may choose to use the `nb2medium` under file or the button on the top toolbar
+
+![](nbs/nb2medium/nbextension/menu_and_button.png)
+
+### From the CLI
+
+From the shell (bash, zsh, sh):
+```bash
+nb2medium "My article" path/to/notebook.ipynb
+```
+Use `nb2medium --help` to see all the different options
+
+### From python
 
 ```python
 from nb2medium.upload import nb2medium
