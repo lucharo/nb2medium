@@ -4,6 +4,15 @@
 
 [![Testing](https://github.com/lucharo/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lucharo/nb2medium/actions/workflows/main.yml)
 
+**nb2medium main assets are:** 
+
+> * Written using `nbdev` and therefore easy to maintain 
+> * Simple pythonic implementation of Medium API
+> * Makes use of `nbconvert` and custom preprocessors to turn notebooks to Markdown documents
+> * Supports uploading blocks as GitHub gists with simple in-cell tags
+> * Supports hiding of cells sources, cells outputs or cells
+> * Comes with Jupyter extension and CLI for ease-of-use
+
 nb2medium represents a simple yet sufficient framework to upload Jupyter notebook to Medium. Its main strenghts are that it makes use of great existing tools such as `nbconvert` or the `requests` package for its main functionality. Moreover the package is developed using `nbdev` from Jeremy Howard and the fastai team, which is claimed to accelerate development an debugging time.
 
 ![](nbs/nb2medium/nbextension/dialog.png)
