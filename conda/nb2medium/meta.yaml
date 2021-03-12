@@ -1,0 +1,45 @@
+package:
+  name: nb2medium
+  version: 0.0.1
+source:
+  sha256: 8ce8feaa4f79d46806e722c2a99e792e52f599857c37d2749cba2633664eae89
+  url: https://files.pythonhosted.org/packages/2f/a5/9286e8cfcbdf691ebb1fa05120967d2afb277ae70ef2c8b89eacc0a46ffd/nb2medium-0.0.1.tar.gz
+about:
+  dev_url: https://lucharo.github.io
+  doc_url: https://lucharo.github.io
+  home: https://lucharo.github.io
+  license: Apache Software
+  license_family: APACHE
+  summary: Python package and Jupyter extension that enables submitting Medium drafts
+    elegantly from a Jupyter Notebook
+build:
+  noarch: python
+  number: '0'
+  script: '{{ PYTHON }} -m pip install . -vv'
+extra:
+  recipe-maintainers:
+  - lucharo
+requirements:
+  host:
+  - pip
+  - python
+  - packaging
+  - requests
+  - nbconvert
+  - pandas
+  - lxml
+  - beautifulsoup4
+  - fastcore
+  run:
+  - pip
+  - python
+  - packaging
+  - requests
+  - nbconvert
+  - pandas
+  - lxml
+  - beautifulsoup4
+  - fastcore
+test:
+  imports:
+  - nb2medium
