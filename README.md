@@ -21,7 +21,7 @@ nb2medium represents a simple yet sufficient framework to upload Jupyter noteboo
 
 `pip install nb2medium`
 
-Then enable the notebook extension by running:
+The extension should be enabled by default but if it is not enable manually by running:
 ```bash
 jupyter notebook install nb2medium --py
 jupyter notebook enable nb2medium --py
