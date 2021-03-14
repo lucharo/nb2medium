@@ -3,6 +3,8 @@
 
 
 [![Testing](https://github.com/lucharo/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lucharo/nb2medium/actions/workflows/main.yml)
+[![PyPI version](https://badge.fury.io/py/nb2medium.svg)](https://badge.fury.io/py/nb2medium)
+
 
 **nb2medium main assets are:** 
 
