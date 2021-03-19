@@ -42,10 +42,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
       run: |
-        todel=$(gh gist list -L 300 | awk '/nb2medium-(demo|test)/ {print $1}')
-        cnt=0
-        for g in "$todel"; do 
-          cnt+=1
-          gh gist delete $g
-        done
-        echo "Deleted $cnt gists in the test action"
+        echo $(gh --version)
+        todel=$(gh gist list -L 300 | awk '/nb2medium-(demo|test)/ {print $1}');
+        cnt=0;
+        for gistid in $todel; do { cnt+=1; gh gist delete $gistid; }; done; 
+        echo "Deleted $cnt gists in the test action";
