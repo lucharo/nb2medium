@@ -36,5 +36,5 @@ jobs:
       with:
         timeout_minutes: 5
         max_attempts: 3
-        cmd: nbdev_test_nbs
+        command: nbdev_test_nbs
         retry_wait_seconds: 180
