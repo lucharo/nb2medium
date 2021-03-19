@@ -9,14 +9,14 @@ We will use this notebook as a complete example of the `nb2medium` capabilities
 Assign a value
 
 
-```python
+```
 a = 1
 ```
 
 Have a value returned (JNB's default), note that printed and returned values are different
 
 
-```python
+```
 a
 ```
 
@@ -30,7 +30,7 @@ a
 Printing a value
 
 
-```python
+```
 print(a)
 ```
 
@@ -40,7 +40,7 @@ print(a)
 Multiple outputs
 
 
-```python
+```
 print(a)
 a
 ```
@@ -58,7 +58,7 @@ a
 ### Plots & Images
 
 
-```python
+```
 import matplotlib.pyplot as plt
 import numpy as np
 ```
@@ -66,7 +66,7 @@ import numpy as np
 #### One `matplotlib` plot
 
 
-```python
+```
 x = np.arange(0, 10, 0.1)
 y = np.sin(x)
 plt.plot(x,y)
@@ -79,7 +79,7 @@ plt.grid()
 Notice that a a list containing a `matplotlib.lines.Line2D` gets returned from `plt.plot(x,y)`, we can cancel that output being returned by adding a semicolon `;`
 
 
-```python
+```
 x = np.arange(0, 10, 0.1)
 y = np.sin(x)
 plt.plot(np.exp(x),y, c = 'red');
@@ -91,7 +91,7 @@ plt.plot(np.exp(x),y, c = 'red');
 ## Several images in a single cell's output
 
 
-```python
+```
 plt.plot(x,y, c = 'orange')
 fig = plt.figure()
 plt.plot(x**2,y)
@@ -120,26 +120,26 @@ plt.grid();
 
 Simple variable definition gist
 
-[https://gist.github.com/d6af36166d51a0a2585cc97b524ebf37](https://gist.github.com/d6af36166d51a0a2585cc97b524ebf37)
+[https://gist.github.com/99d61f4f0e05a263601e5fd02bf01b19](https://gist.github.com/99d61f4f0e05a263601e5fd02bf01b19)
 
 
-[https://gist.github.com/88a1725ea5180907c6b32a06deec86f8](https://gist.github.com/88a1725ea5180907c6b32a06deec86f8)
+[https://gist.github.com/6a084db8b65010785ce1a983098bb114](https://gist.github.com/6a084db8b65010785ce1a983098bb114)
 
 
 ### Pandas dataframes as CSV gists
 
 When we specify the flag `upload: output`, `nb2medium` will upload the output of the cell in a suitable format
 
-[https://gist.github.com/b5491519a07748ba88a5d82657ea288a](https://gist.github.com/b5491519a07748ba88a5d82657ea288a)
+[https://gist.github.com/1c8bccde3942d375f94e3f7c8a3eee2d](https://gist.github.com/1c8bccde3942d375f94e3f7c8a3eee2d)
 
 
 ### Uploading both code and dataframe as gists
 
 We can achieve this by specifying the flag `upload: both`
 
-[https://gist.github.com/d73bbd5d20501a45f368243c0901e91c](https://gist.github.com/d73bbd5d20501a45f368243c0901e91c)
+[https://gist.github.com/6d3b7a64daec9cfbea3c4e48eb5a9484](https://gist.github.com/6d3b7a64daec9cfbea3c4e48eb5a9484)
 
-[https://gist.github.com/b3d8eded6fb31fd3b19761fa274ff1f9](https://gist.github.com/b3d8eded6fb31fd3b19761fa274ff1f9)
+[https://gist.github.com/841e0bd3373b957ce27c69449991b4ab](https://gist.github.com/841e0bd3373b957ce27c69449991b4ab)
 
 
 ### Hiding cells
@@ -148,6 +148,6 @@ We can achieve this by specifying the flag `upload: both`
 
 
 
-```python
+```
 print("This code will be shown, but it's output won't")
 ```

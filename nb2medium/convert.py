@@ -164,7 +164,7 @@ import pandas as pd
 
 class GisterPreprocessor(Preprocessor):
     """
-    Preprocessor that detects the presence of the #gist tag in a Jupyter Notebook cell,
+    Preprocessor that detects the presence of the #%gist tag in a Jupyter Notebook cell,
     uploads the code in that cell as a GitHub gist for the authenticated user and replaces the original cell
     for a link to the gist in the resulting markdown file
     """

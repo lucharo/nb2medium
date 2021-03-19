@@ -4,7 +4,7 @@
 
 [![Testing](https://github.com/lucharo/nb2medium/actions/workflows/main.yml/badge.svg)](https://github.com/lucharo/nb2medium/actions/workflows/main.yml)
 [![PyPI version](https://badge.fury.io/py/nb2medium.svg)](https://badge.fury.io/py/nb2medium)
-
+[![Downloads](https://static.pepy.tech/personalized-badge/nb2medium?period=total&units=international_system&left_color=black&right_color=yellowgreen&left_text=Downloads)](https://pepy.tech/project/nb2medium)
 
 **nb2medium main assets are:** 
 
@@ -23,7 +23,7 @@ nb2medium represents a simple yet sufficient framework to upload Jupyter noteboo
 
 `pip install nb2medium`
 
-The extension should be enabled by default but if it is not enable manually by running:
+Then enable the notebook extension by running:
 ```bash
 jupyter notebook install nb2medium --py
 jupyter notebook enable nb2medium --py
