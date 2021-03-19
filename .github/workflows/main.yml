@@ -29,8 +29,12 @@ jobs:
       run: |
         if [ -n "$(nbdev_diff_nbs)" ]; then echo -e "!!! Detected difference between the notebooks and the library"; false; fi
     - name: Run tests
+      uses: nick-invision/retry@v2
       env:
         MEDIUM_TOKEN: ${{ secrets.MEDIUM_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
-      run: |
-        nbdev_test_nbs
+      with:
+        timeout_minutes: 5
+        max_attempts: 3
+        command: nbdev_test_nbs
+        retry_wait_seconds: 180
