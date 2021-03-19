@@ -63,7 +63,7 @@ Use `nb2medium --help` to see all the different options
 
 ### From python
 
-```python
+```
 from nb2medium.upload import nb2medium
 
 nb2medium(title = 'My First Article', notebook = '../samples/test-notebook.ipynb');
